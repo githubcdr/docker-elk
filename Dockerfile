@@ -17,7 +17,7 @@ COPY files/root/ /
 RUN apk add --update --no-cache s6 ca-certificates openjdk8-jre-base wget unzip git tar bash nodejs
 
 # fixups and permissions
-RUN	   mkdir /opt/logstash /opt/elasticsearch /opt/kibana /opt/logstash/patterns /opt/logstash/databases \
+RUN	   mkdir /opt /opt/logstash /opt/elasticsearch /opt/kibana /opt/logstash/patterns /opt/logstash/databases \
 	&& adduser -D -h /opt/elasticsearch elasticsearch \
 	&& adduser -D -h /opt/logstash logstash \
 	&& adduser -D -h /opt/kibana kibana \
