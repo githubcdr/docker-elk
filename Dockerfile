@@ -4,7 +4,7 @@ MAINTAINER me codar nl
 ENV ES_URL="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.0.0.tar.gz"
 ENV LS_URL="https://artifacts.elastic.co/downloads/logstash/logstash-5.0.0.tar.gz"
 ENV  K_URL="https://artifacts.elastic.co/downloads/kibana/kibana-5.0.0-linux-x86_64.tar.gz"
-ENV BEATSDASHBOARD_URL="https://artifacts.elastic.co/downloads/beats/beats-dashboards/beats-dashboards-5.0.0.zip"
+#ENV BEATSDASHBOARD_URL="https://artifacts.elastic.co/downloads/beats/beats-dashboards/beats-dashboards-5.0.0.zip"
 #ENV GEOAS_URL="http://download.maxmind.com/download/geoip/database/asnum/GeoIPASNum.dat.gz"
 ENV GEOCITY_URL="http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.mmdb.gz"
 
