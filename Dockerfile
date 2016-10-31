@@ -23,7 +23,7 @@ RUN	   adduser -D -h /opt/elasticsearch elasticsearch \
 	&& wget -q $ES_URL -O elasticsearch.tar.gz \
 	&& wget -q $LS_URL -O logstash.tar.gz \
 	&& wget -q  $K_URL -O kibana.tar.gz \
-	&& wget -q $BEATSDASHBOARD_URL -O dashboards.zip \
+	# && wget -q $BEATSDASHBOARD_URL -O dashboards.zip \
 	# && wget -q $GEOAS_URL -O geoip.gz \
 	&& wget -q $GEOCITY_URL -O geocity.gz \
 	&& tar -zxf elasticsearch.tar.gz --owner=elasticsearch --group=elasticsearch --strip-components=1 -C /opt/elasticsearch \
@@ -43,14 +43,8 @@ RUN	   chmod +x /service/*/run \
 	&& echo "server.host: 0.0.0.0" >> /opt/kibana/config/kibana.yml \
 	&& rm -rf /tmp/*
 
-# todo
-# geodata
-# dashboards
-# plugins
-# grok patterns
-
 # ready to run, expose web and mqtt
 EXPOSE 5601/tcp 9200/tcp 9300/tcp 5044/tcp
 
+# manage with s6
 ENTRYPOINT ["/bin/s6-svscan","/service"]
-
