@@ -32,16 +32,16 @@ RUN	   mkdir /opt /opt/logstash /opt/elasticsearch /opt/kibana /opt/logstash/pat
 	&& tar -zxf kibana.tar.gz --strip-components=1 -C /opt/kibana \
 	&& gunzip -c geocity.gz > /opt/logstash/databases/GeoLiteCity.dat \
 	&& git clone https://github.com/logstash-plugins/logstash-patterns-core.git \
-	&& cp -a logstash-patterns-core/patterns/* /opt/logstash/patterns/
-
-# fixups
-RUN	   chmod +x /service/*/run \
+	&& cp -a logstash-patterns-core/patterns/* /opt/logstash/patterns/ \
 	&& /opt/logstash/bin/logstash-plugin install logstash-input-beats \
 	&& chown -R elasticsearch:elasticsearch /opt/elasticsearch \
 	&& chown -R kibana:kibana /opt/kibana \
 	&& chown -R logstash:logstash /opt/logstash \
 	&& echo "network.host: 0.0.0.0" >> /opt/elasticsearch/config/elasticsearch.yml \
-	&& echo "server.host: 0.0.0.0" >> /opt/kibana/config/kibana.yml \
+	&& echo "server.host: 0.0.0.0" >> /opt/kibana/config/kibana.yml
+
+# fixups
+RUN	   chmod +x /service/*/run \
 	&& rm -rf /tmp/*
 
 # ready to run, expose web and mqtt
