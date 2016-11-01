@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
+chown -R kibana:kibana /opt/kibana
 exec s6-setuidgid kibana node --no-warnings /opt/kibana/src/cli 2>&1
-
