@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
-# so dirrrrrty, so docker
 
+chown elasticsearch /var/lib/elasticsearch /opt/elasticsearch
 exec s6-setuidgid elasticsearch /usr/bin/java -Xms1g -Xmx1g -XX:+UseConcMarkSweepGC -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -server -Djava.awt.headless=true -Dfile.encoding=UTF-8 -Djna.nosys=true -Dio.netty.noUnsafe=true -Dio.netty.noKeySetOptimization=true -Dlog4j.shutdownHookEnabled=false -Dlog4j2.disable.jmx=true -Dlog4j.skipJansi=true -XX:+HeapDumpOnOutOfMemoryError -Des.path.home=/opt/elasticsearch -cp /opt/elasticsearch/lib/elasticsearch-5.0.0.jar:/opt/elasticsearch/lib/* org.elasticsearch.bootstrap.Elasticsearch 2>&1
