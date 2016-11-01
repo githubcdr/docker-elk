@@ -17,7 +17,7 @@ COPY files/root/ /
 RUN apk add --update --no-cache s6 ca-certificates openjdk8-jre-base wget unzip git tar bash nodejs
 
 # fixups and permissions
-RUN	   mkdir /opt /opt/logstash /opt/elasticsearch /opt/kibana /opt/logstash/patterns /opt/logstash/databases \
+RUN	   mkdir -p /opt/logstash /opt/elasticsearch /opt/kibana /opt/logstash/patterns /opt/logstash/databases /var/lib/elasticsearch \
 	&& adduser -D -h /opt/elasticsearch elasticsearch \
 	&& adduser -D -h /opt/logstash logstash \
 	&& adduser -D -h /opt/kibana kibana \
@@ -37,8 +37,6 @@ RUN	   mkdir /opt /opt/logstash /opt/elasticsearch /opt/kibana /opt/logstash/pat
 	&& chown -R elasticsearch:elasticsearch /opt/elasticsearch \
 	&& chown -R kibana:kibana /opt/kibana \
 	&& chown -R logstash:logstash /opt/logstash \
-	&& echo "network.host: 0.0.0.0" >> /opt/elasticsearch/config/elasticsearch.yml \
-	&& echo "server.host: 0.0.0.0" >> /opt/kibana/config/kibana.yml
 
 # fixups
 RUN	   chmod +x /service/*/run \
