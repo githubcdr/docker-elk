@@ -30,10 +30,7 @@ RUN	   mkdir -p /opt/elasticsearch /opt/kibana /opt/logstash/patterns /opt/logst
 	&& gunzip -c geocity.gz > /opt/logstash/databases/GeoLiteCity.dat \
 	&& git clone https://github.com/logstash-plugins/logstash-patterns-core.git \
 	&& cp -a logstash-patterns-core/patterns/* /opt/logstash/patterns/ \
-	&& /opt/logstash/bin/logstash-plugin install logstash-input-beats \
-	&& chown -R elasticsearch:elasticsearch /opt/elasticsearch /var/lib/elasticsearch \
-	&& chown -R kibana:kibana /opt/kibana \
-	&& chown -R logstash:logstash /opt/logstash
+	&& /opt/logstash/bin/logstash-plugin install logstash-input-beats
 
 # add files, this also creates the layout for the filesystem
 COPY files/root/ /
