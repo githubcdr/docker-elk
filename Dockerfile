@@ -10,7 +10,7 @@ ENV GEOCITY_URL="http://geolite.maxmind.com/download/geoip/database/GeoLite2-Cit
 
 WORKDIR	/tmp
 
-RUN apk    add --update --no-cache s6 ca-certificates openjdk8-jre-base wget unzip git tar nodejs \
+RUN apk    add --update --no-cache s6 ca-certificates openjdk8-jre-base wget unzip git tar nodejs bash \
 	&& mkdir -p /opt/elasticsearch /opt/kibana /opt/logstash/patterns /opt/logstash/databases /var/lib/elasticsearch
 
 # fixups and permissions
