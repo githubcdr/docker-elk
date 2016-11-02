@@ -28,9 +28,9 @@ docker logs -f elk
 
 You can now open kibana
 
-http://<IP>:5601
+http://elasticsearchhost:5601
 
-There will probably be no index patterns, you'll have to import them manually. For beats you can use the new import_dashboards script which automate this process.
+There will probably be no index patterns, you'll have to import them manually. For beats you can use the new import_dashboards script which automate this process. (Install filebeat for this functionality.)
 
 ```
 /usr/share/filebeat/scripts/import_dashboards -es http://<elasticsearch>:9200
