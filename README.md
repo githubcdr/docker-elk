@@ -26,6 +26,18 @@ Check progress with
 docker logs -f elk
 ```
 
+You can now open kibana
+
+http://<IP>:5601
+
+There will probably be no index patterns, you'll have to import them manually. For beats you can use the new import_dashboards script which automate this process.
+
+```
+/usr/share/filebeat/scripts/import_dashboards -es http://<elasticsearch>:9200
+/usr/share/metricbeat/scripts/import_dashboards -es http://<elasticsearch>:9200
+/usr/share/packetbeat/scripts/import_dashboards -es http://<elasticsearch>:9200
+```
+
 ## Todo
 
 * Add java environment options
@@ -34,3 +46,4 @@ docker logs -f elk
 * curator install
 * auto cleanup of old indices
 * proxy with authentication
+* elasticsearch plugins
