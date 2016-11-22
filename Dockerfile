@@ -21,9 +21,9 @@ RUN	   adduser -D -h /opt/elasticsearch elasticsearch \
 	&& wget -q $LS_URL -O logstash.tar.gz \
 	&& wget -q  $K_URL -O kibana.tar.gz \
 	&& wget -q $GEOCITY_URL -O geocity.gz \
-	&& tar -zxf elasticsearch.tar.gz --owner=elasticsearch --group=elasticsearch --strip-components=1 -C /opt/elasticsearch \
-	&& tar -zxf logstash.tar.gz --owner=logstash --group=logstash --strip-components=1 -C /opt/logstash \
-	&& tar -zxf kibana.tar.gz --owner=kibana --group=kibana --strip-components=1 -C /opt/kibana \
+	&& tar -zxf elasticsearch.tar.gz --strip-components=1 -C /opt/elasticsearch \
+	&& tar -zxf logstash.tar.gz --strip-components=1 -C /opt/logstash \
+	&& tar -zxf kibana.tar.gz --strip-components=1 -C /opt/kibana \
 	&& gunzip -c geocity.gz > /opt/logstash/databases/GeoLiteCity.dat \
 	&& git clone https://github.com/logstash-plugins/logstash-patterns-core.git \
 	&& cp -a logstash-patterns-core/patterns/* /opt/logstash/patterns/ \
