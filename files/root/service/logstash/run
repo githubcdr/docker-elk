@@ -1,5 +1,8 @@
 #!/usr/bin/env sh
 
+# reset permissions
+chown -R logstash:logstash /opt/logstash
+
 exec s6-setuidgid logstash \
                   java \
                   -Xmx1g \
