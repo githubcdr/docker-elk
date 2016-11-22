@@ -1,9 +1,9 @@
 FROM alpine:latest
 MAINTAINER me codar nl
 
-ENV ES_URL="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.0.0.tar.gz"
-ENV LS_URL="https://artifacts.elastic.co/downloads/logstash/logstash-5.0.0.tar.gz"
-ENV  K_URL="https://artifacts.elastic.co/downloads/kibana/kibana-5.0.0-linux-x86_64.tar.gz"
+ENV ES_URL="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.0.1.tar.gz"
+ENV LS_URL="https://artifacts.elastic.co/downloads/logstash/logstash-5.0.1.tar.gz"
+ENV  K_URL="https://artifacts.elastic.co/downloads/kibana/kibana-5.0.1-linux-x86_64.tar.gz"
 ENV GEOCITY_URL="http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.mmdb.gz"
 # Thanks https://github.com/logstash-plugins/logstash-filter-geoip/issues/90
 #ENV GEOAS_URL="http://download.maxmind.com/download/geoip/database/asnum/GeoIPASNum.dat.gz"
