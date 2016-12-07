@@ -34,6 +34,7 @@ RUN	   adduser -D -h /opt/elasticsearch elasticsearch \
 	&& git clone https://github.com/logstash-plugins/logstash-patterns-core.git \
 	&& cp -a logstash-patterns-core/patterns/* /opt/logstash/patterns/ \
 	&& /opt/logstash/bin/logstash-plugin install logstash-input-beats \
+	&& ln -s /opt/jdk/bin/java /usr/bin/java
 	&& rm -rf /tmp/*
 
 # add files, this also creates the layout for the filesystem
