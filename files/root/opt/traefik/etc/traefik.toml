@@ -1,0 +1,38 @@
+debug = false
+checkNewVersion = false
+defaultEntryPoints = ["http", "https"]
+[acme]
+email = "me@codar.nl"
+storage = "acme.json"
+onDemand = true
+entryPoint = "https"
+[[acme.domains]]
+  main = "syslog1.tacom.nl"
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+    [entryPoints.http.redirect]
+      entryPoint = "https"
+  [entryPoints.https]
+  address = ":443"
+  [entryPoints.https.auth.basic]
+  users = ["codar:$2a$09$jEnchSvXRT4xewz1NCUF3eq.X1fXud.GswtrzNDwc8NM6qbEzvq6q"]
+    [entryPoints.https.tls]
+    MinVersion = "VersionTLS12"
+    #CipherSuites = ["TLS_RSA_WITH_AES_256_GCM_SHA384"]
+[web]
+address = ":8080"
+[web.statistics]
+  RecentErrors = 10
+[file]
+  [backends]
+    [backends.backend1]
+      [backends.backend1.servers.server1]
+       url = "http://127.0.0.1:5601/"
+       weight = 1
+  [frontends]
+    [frontends.frontend1]
+    backend = "backend1"
+    passHostHeader = true
+      [frontends.frontend1.routes.test_1]
+      rule = "Host:syslog1.tacom.nl"
