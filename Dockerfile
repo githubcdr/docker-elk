@@ -18,7 +18,7 @@ ENV TRAEFIK_URL="https://github.com/containous/traefik/releases/download/v1.1.2/
 WORKDIR	/tmp
 
 RUN apk    add --update --no-cache s6 ca-certificates openssl wget unzip git tar nodejs \
-	&& mkdir -p /opt/elasticsearch /opt/kibana /opt/logstash/patterns /opt/logstash/databases /opt/traefik /var/lib/elasticsearch
+	&& mkdir -p /opt/elasticsearch /opt/kibana /opt/logstash/patterns /opt/logstash/databases /opt/traefik/etc /var/lib/elasticsearch
 
 # fixups and permissions
 RUN	   adduser -D -h /opt/elasticsearch elasticsearch \
