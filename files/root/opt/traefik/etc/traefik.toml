@@ -1,13 +1,13 @@
-debug = false
-checkNewVersion = false
 defaultEntryPoints = ["http", "https"]
+
 [acme]
 email = "me@codar.nl"
-storage = "acme.json"
+storage = "/opt/traefik/etc/acme.json"
 onDemand = true
 entryPoint = "https"
 [[acme.domains]]
   main = "syslog1.tacom.nl"
+
 [entryPoints]
   [entryPoints.http]
   address = ":80"
@@ -20,10 +20,12 @@ entryPoint = "https"
     [entryPoints.https.tls]
     MinVersion = "VersionTLS12"
     #CipherSuites = ["TLS_RSA_WITH_AES_256_GCM_SHA384"]
+
 [web]
 address = ":8080"
 [web.statistics]
   RecentErrors = 10
+
 [file]
   [backends]
     [backends.backend1]
