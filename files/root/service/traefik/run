@@ -1,3 +1,0 @@
-#!/usr/bin/env sh
-
-exec traefik --configFile=/opt/traefik/etc/traefik.toml 2>&1
