@@ -10,6 +10,7 @@ ENV ES_URL="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5
 ENV LS_URL="https://artifacts.elastic.co/downloads/logstash/logstash-5.1.1.tar.gz"
 ENV  K_URL="https://artifacts.elastic.co/downloads/kibana/kibana-5.1.1-linux-x86_64.tar.gz"
 ENV GEOCITY_URL="http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.mmdb.gz"
+ENV TRAEFIK_URL="https://github.com/containous/traefik/releases/download/v1.1.2/traefik_linux-amd64"
 
 # Thanks https://github.com/logstash-plugins/logstash-filter-geoip/issues/90
 #ENV GEOAS_URL="http://download.maxmind.com/download/geoip/database/asnum/GeoIPASNum.dat.gz"
@@ -17,7 +18,7 @@ ENV GEOCITY_URL="http://geolite.maxmind.com/download/geoip/database/GeoLite2-Cit
 WORKDIR	/tmp
 
 RUN apk    add --update --no-cache s6 ca-certificates openssl wget unzip git tar nodejs \
-	&& mkdir -p /opt/elasticsearch /opt/kibana /opt/logstash/patterns /opt/logstash/databases /var/lib/elasticsearch
+	&& mkdir -p /opt/elasticsearch /opt/kibana /opt/logstash/patterns /opt/logstash/databases /opt/traefik /var/lib/elasticsearch
 
 # fixups and permissions
 RUN	   adduser -D -h /opt/elasticsearch elasticsearch \
@@ -26,10 +27,12 @@ RUN	   adduser -D -h /opt/elasticsearch elasticsearch \
 	&& wget -q $ES_URL -O elasticsearch.tar.gz \
 	&& wget -q $LS_URL -O logstash.tar.gz \
 	&& wget -q  $K_URL -O kibana.tar.gz \
+	&& wget -q $TRAEFIK_URL -O /opt/traefik/traefik \
 	&& wget -q $GEOCITY_URL -O geocity.gz \
 	&& tar -zxf elasticsearch.tar.gz --strip-components=1 -C /opt/elasticsearch \
 	&& tar -zxf logstash.tar.gz --strip-components=1 -C /opt/logstash \
 	&& tar -zxf kibana.tar.gz --strip-components=1 -C /opt/kibana \
+	&& chmod a+x /opt/traefik/traefik \
 	&& gunzip -c geocity.gz > /opt/logstash/databases/GeoLiteCity.dat \
 	&& git clone https://github.com/logstash-plugins/logstash-patterns-core.git \
 	&& cp -a logstash-patterns-core/patterns/* /opt/logstash/patterns/ \
