@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+exec s6-setuidgid logstash s6-log -b n1 s1000000 t /tmp/logstash
