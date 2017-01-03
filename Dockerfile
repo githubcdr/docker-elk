@@ -8,11 +8,7 @@ ENV  K_URL="https://artifacts.elastic.co/downloads/kibana/kibana-5.1.1-linux-x86
 ENV GEOCITY_URL="http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.mmdb.gz"
 
 RUN apk    add --update --no-cache s6 ca-certificates openssl wget unzip git tar nodejs \
-	&& mkdir -p /opt/elasticsearch \
-							/opt/kibana \
-							/opt/logstash/patterns \
-							/opt/logstash/databases \
-							/var/lib/elasticsearch
+	&& mkdir -p /opt/elasticsearch /opt/kibana /opt/logstash/patterns /opt/logstash/databases /var/lib/elasticsearch
 
 # fixups and permissions
 RUN	   adduser -D -h /opt/elasticsearch elasticsearch \
