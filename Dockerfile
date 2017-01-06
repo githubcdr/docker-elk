@@ -32,7 +32,7 @@ RUN	   adduser -D -h /opt/elasticsearch elasticsearch \
 COPY files/root/ /
 
 # fixups
-RUN	   chmod a+x /service/*/run /service/*/log/run
+RUN	   chmod a+x /service/*/run
 
 # ready to run, expose web and mqtt
 EXPOSE 5601/tcp 9200/tcp 9300/tcp 5044/tcp
