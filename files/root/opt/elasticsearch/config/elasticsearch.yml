@@ -1,6 +1,2 @@
 network.host: 0.0.0.0
 path.data: /var/lib/elasticsearch
-
-# local mode only
-index.number_of_shards: 1
-index.number_of_replicas: 0
