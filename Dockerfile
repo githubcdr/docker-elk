@@ -2,9 +2,9 @@ FROM anapsix/alpine-java:latest
 MAINTAINER me codar nl
 WORKDIR	/tmp
 
-ENV ES_URL="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.1.2.tar.gz"
-ENV LS_URL="https://artifacts.elastic.co/downloads/logstash/logstash-5.1.2.tar.gz"
-ENV  K_URL="https://artifacts.elastic.co/downloads/kibana/kibana-5.1.2-linux-x86_64.tar.gz"
+ENV ES_URL="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.2.0.tar.gz"
+ENV LS_URL="https://artifacts.elastic.co/downloads/logstash/logstash-5.2.0.tar.gz"
+ENV  K_URL="https://artifacts.elastic.co/downloads/kibana/kibana-5.2.0-linux-x86_64.tar.gz"
 ENV GEOCITY_URL="http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.mmdb.gz"
 
 RUN apk    add --update --no-cache s6 ca-certificates openssl wget unzip git tar nodejs \

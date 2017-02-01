@@ -7,8 +7,8 @@ chown -R elasticsearch:elasticsearch /var/lib/elasticsearch /opt/elasticsearch
 exec s6-setuidgid elasticsearch \
                   java \
                   -server \
-                  -Xms1g \
-                  -Xmx1g \
+                  -Xms2g \
+                  -Xmx2g \
                   -XX:+UseConcMarkSweepGC \
                   -XX:CMSInitiatingOccupancyFraction=75 \
                   -XX:+UseCMSInitiatingOccupancyOnly \
@@ -24,5 +24,5 @@ exec s6-setuidgid elasticsearch \
                   -Dlog4j2.disable.jmx=true \
                   -Dlog4j.skipJansi=true \
                   -Des.path.home=/opt/elasticsearch \
-                  -cp /opt/elasticsearch/lib/elasticsearch-5.1.2.jar:/opt/elasticsearch/lib/* \
-                  org.elasticsearch.bootstrap.Elasticsearch 2>&1
+                  -cp /opt/elasticsearch/lib/elasticsearch-5.2.0.jar:/opt/elasticsearch/lib/* \
+                   org.elasticsearch.bootstrap.Elasticsearch 2>&1
