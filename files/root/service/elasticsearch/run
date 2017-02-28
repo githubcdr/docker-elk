@@ -24,5 +24,5 @@ exec s6-setuidgid elasticsearch \
                   -Dlog4j2.disable.jmx=true \
                   -Dlog4j.skipJansi=true \
                   -Des.path.home=/opt/elasticsearch \
-                  -cp /opt/elasticsearch/lib/elasticsearch-5.2.1.jar:/opt/elasticsearch/lib/* \
+                  -cp /opt/elasticsearch/lib/elasticsearch-5.2.2.jar:/opt/elasticsearch/lib/* \
                    org.elasticsearch.bootstrap.Elasticsearch 2>&1
