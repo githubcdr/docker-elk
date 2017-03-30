@@ -7,8 +7,8 @@ chown -R elasticsearch:elasticsearch /var/lib/elasticsearch /opt/elasticsearch
 exec s6-setuidgid elasticsearch \
                   java \
                   -server \
-                  -Xms1g \
-                  -Xmx1g \
+                  -Xms2g \
+                  -Xmx2g \
                   -XX:+UseConcMarkSweepGC \
                   -XX:CMSInitiatingOccupancyFraction=75 \
                   -XX:+UseCMSInitiatingOccupancyOnly \
