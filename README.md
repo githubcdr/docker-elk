@@ -1,6 +1,6 @@
 # Elasticsearch, Logstash and Kibana 5.3.0
 
-This is a small container at only 300Mb compressed, running a full functional ELK 5.0 stack.
+This is a small container at only 300Mb compressed, running a full functional ELK 5 stack.
 
 ## Features
 
@@ -26,9 +26,7 @@ Check progress with
 docker logs -f elk
 ```
 
-You can now open kibana
-
-http://elasticsearchhost:5601
+You can now open kibana http://elasticsearchhost:5601
 
 There will probably be no index patterns, you'll have to import them manually. For beats you can use the new import_dashboards script which automate this process. (Install filebeat for this functionality.)
 
@@ -42,8 +40,6 @@ There will probably be no index patterns, you'll have to import them manually. F
 
 * Add java environment options
 * autoupdate GEO data
-* logging
 * curator install
 * auto cleanup of old indices
-* proxy with authentication
 * elasticsearch plugins
