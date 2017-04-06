@@ -35,7 +35,10 @@ sysctl -w vm.max_map_count=262144
 Start the container
 
 ```
-docker run -d -p 5601:5601 -p 9200:9200 -p 5044:5044 -v /var/lib/elasticsearch:/var/lib/elasticsearch --name elk cdrocker/elk5:latest
+docker run -d -p 5601:5601 -p 9200:9200 -p 5044:5044 \
+  -v /var/lib/elasticsearch:/var/lib/elasticsearch \
+  --name elk \
+  cdrocker/elk5:latest
 ```
 
 Check progress with
