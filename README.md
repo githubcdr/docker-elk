@@ -2,15 +2,33 @@
 
 This is a small container at only 300Mb compressed, running a full functional ELK 5 stack.
 
+## Important
+
+Make sure your docker hosts has the folowing sysctl setting, this is required for ELK
+
+insert in /etc/sysctl.conf
+
+```
+vm.max_map_count = 262144
+```
+
+or run
+
+```
+sysctl -w vm.max_map_count=262144
+```
+
 ## Features
 
 * filebeat support
-* cisco syslog support, with grok filter
+* cisco syslog support
+* yum.log support via filebeat
+* nginx accesslogs support
 * updated upstream grok patterns
-* yum.log input via filebeat
 * running on Alpine Linux with s6, small, clean and efficient
 * Maxmind geo data enabled
 * Each process runs as own user
+* index is created base on type
 
 ## Instructions
 
