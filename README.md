@@ -28,7 +28,7 @@ sysctl -w vm.max_map_count=262144
 * running on Alpine Linux with s6, small, clean and efficient
 * Maxmind geo data enabled
 * Each process runs as own user
-* index is created base on type
+* multi input index is created based on type
 
 ## Instructions
 
