@@ -3,28 +3,4 @@
 # reset permissions after docker volume remount
 chown -R elasticsearch:elasticsearch /var/lib/elasticsearch /opt/elasticsearch
 
-# java wat doe je met mij?
-exec s6-setuidgid elasticsearch \
-                  java \
-                  -Xms2g \
-                  -Xmx2g \
-                  -XX:+UseConcMarkSweepGC \
-                  -XX:CMSInitiatingOccupancyFraction=75 \
-                  -XX:+UseCMSInitiatingOccupancyOnly \
-                  -XX:+DisableExplicitGC \
-                  -XX:+AlwaysPreTouch \
-                  -server \
-                  -Xss1m \
-                  -Djava.awt.headless=true \
-                  -Dfile.encoding=UTF-8 \
-                  -Djna.nosys=true \
-                  -Djdk.io.permissionsUseCanonicalPath=true \
-                  -Dio.netty.noUnsafe=true \
-                  -Dio.netty.noKeySetOptimization=true \
-                  -Dio.netty.recycler.maxCapacityPerThread=0 \
-                  -Dlog4j.shutdownHookEnabled=false \
-                  -Dlog4j2.disable.jmx=true \
-                  -Dlog4j.skipJansi=true \
-                  -XX:+HeapDumpOnOutOfMemoryError \
-                  -Des.path.home=/opt/elasticsearch \
-                  -cp /opt/elasticsearch/lib/* org.elasticsearch.bootstrap.Elasticsearch 2>&1
+exec s6-setuidgid elasticsearch /opt/elasticsearch/bin/elasticsearch 2>&1
