@@ -6,7 +6,6 @@ chown -R elasticsearch:elasticsearch /var/lib/elasticsearch /opt/elasticsearch
 # java wat doe je met mij?
 exec s6-setuidgid elasticsearch \
                   java \
-                  -server \
                   -Xms2g \
                   -Xmx2g \
                   -XX:+UseConcMarkSweepGC \
@@ -14,15 +13,18 @@ exec s6-setuidgid elasticsearch \
                   -XX:+UseCMSInitiatingOccupancyOnly \
                   -XX:+DisableExplicitGC \
                   -XX:+AlwaysPreTouch \
-                  -XX:+HeapDumpOnOutOfMemoryError \
+                  -server \
+                  -Xss1m \
                   -Djava.awt.headless=true \
                   -Dfile.encoding=UTF-8 \
                   -Djna.nosys=true \
+                  -Djdk.io.permissionsUseCanonicalPath=true \
                   -Dio.netty.noUnsafe=true \
                   -Dio.netty.noKeySetOptimization=true \
+                  -Dio.netty.recycler.maxCapacityPerThread=0 \
                   -Dlog4j.shutdownHookEnabled=false \
                   -Dlog4j2.disable.jmx=true \
                   -Dlog4j.skipJansi=true \
+                  -XX:+HeapDumpOnOutOfMemoryError \
                   -Des.path.home=/opt/elasticsearch \
-                  -cp /opt/elasticsearch/lib/elasticsearch-5.4.0.jar:/opt/elasticsearch/lib/* \
-                  org.elasticsearch.bootstrap.Elasticsearch 2>&1
+                  -cp /opt/elasticsearch/lib/* org.elasticsearch.bootstrap.Elasticsearch 2>&1
