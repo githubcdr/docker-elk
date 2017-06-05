@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-# reset permissions
+# reset permissions after docker volume remount
 chown -R logstash:logstash /opt/logstash
 
 exec s6-setuidgid logstash /opt/logstash/bin/logstash -f /etc/logstash/logstash.conf 2>&1
