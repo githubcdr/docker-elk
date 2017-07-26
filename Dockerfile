@@ -12,7 +12,7 @@ ENV GEOCITY_URL="http://geolite.maxmind.com/download/geoip/database/GeoLite2-Cit
 # meta
 LABEL maintainer="me codar nl"
 LABEL source="https://github.com/githubcdr/docker-elk"
-LABEL version=${VERSION}
+LABEL version="${VERSION}"
 LABEL description="Elasticsearch, Logstash and Kibana based on Alpine-java"
 
 # do all in /tmp
