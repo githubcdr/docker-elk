@@ -15,10 +15,6 @@ LABEL source="https://github.com/githubcdr/docker-elk"
 LABEL version=${VERSION}
 LABEL description="Elasticsearch, Logstash and Kibana based on Alpine-java"
 
-# check if elasticsearch is operational
-HEALTHCHECK --interval=120s --timeout=2s --retries=12 \
-	CMD curl --silent --fail localhost:9200/_cluster/health || exit 1
-
 # do all in /tmp
 WORKDIR	/tmp
 
