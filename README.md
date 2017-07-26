@@ -1,4 +1,4 @@
-# Elasticsearch, Logstash and Kibana 5.5.0
+# Elasticsearch, Logstash and Kibana 5.5.1
 
 This is a small container at only 300Mb compressed, running a full functional ELK 5 stack.
 
@@ -29,6 +29,7 @@ sysctl -w vm.max_map_count=262144
 * Maxmind geo data enabled
 * Each process runs as own user
 * multi input index is created based on type
+* docker HEALTHCHECK for elasticsearch
 
 ## Instructions
 

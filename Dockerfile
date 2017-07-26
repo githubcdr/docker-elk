@@ -1,17 +1,31 @@
+# required full openssl support
 FROM anapsix/alpine-java:latest
-MAINTAINER me codar nl
-WORKDIR	/tmp
 
-ENV ES_URL="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.5.0.tar.gz"
-ENV LS_URL="https://artifacts.elastic.co/downloads/logstash/logstash-5.5.0.tar.gz"
-ENV  K_URL="https://artifacts.elastic.co/downloads/kibana/kibana-5.5.0-linux-x86_64.tar.gz"
+# changeables
+ENV VERSION=5.5.1
+ENV PKGS="s6 ca-certificates openssl wget unzip git tar nodejs"
+ENV ES_URL="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${VERSION}.tar.gz"
+ENV LS_URL="https://artifacts.elastic.co/downloads/logstash/logstash-${VERSION}.tar.gz"
+ENV  K_URL="https://artifacts.elastic.co/downloads/kibana/kibana-${VERSION}-linux-x86_64.tar.gz"
 ENV GEOCITY_URL="http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.mmdb.gz"
 
-RUN apk    add --update --no-cache s6 ca-certificates openssl wget unzip git tar nodejs \
-	&& mkdir -p /opt/elasticsearch /opt/kibana /opt/logstash/patterns /opt/logstash/databases /var/lib/elasticsearch
+# meta
+LABEL maintainer="me codar nl"
+LABEL source="https://github.com/githubcdr/docker-elk"
+LABEL version=${VERSION}
+LABEL description="Elasticsearch, Logstash and Kibana based on Alpine-java"
 
-# fixups and permissions
-RUN	   adduser -D -h /opt/elasticsearch elasticsearch \
+# check if elasticsearch is operational
+HEALTHCHECK --interval=120s --timeout=2s --retries=12 \
+	CMD curl --silent --fail localhost:9200/_cluster/health || exit 1
+
+# do all in /tmp
+WORKDIR	/tmp
+
+# all-in-one RUN creates nice small images
+RUN apk    add --update --no-cache ${PKGS} \
+	&& mkdir -p /opt/elasticsearch /opt/kibana /opt/logstash/patterns /opt/logstash/databases /var/lib/elasticsearch \
+	&& adduser -D -h /opt/elasticsearch elasticsearch \
 	&& adduser -D -h /opt/logstash logstash \
 	&& adduser -D -h /opt/kibana kibana \
 	&& wget -q $ES_URL -O elasticsearch.tar.gz \
@@ -31,10 +45,14 @@ RUN	   adduser -D -h /opt/elasticsearch elasticsearch \
 # add files, this also creates the layout for the filesystem
 COPY files/root/ /
 
-# fixups
+# fix permissions, note that each run file also resets permissions at start
 RUN	   chmod a+x /service/*/run
 
-# ready to run
+# open following network ports
+# 5601 kibana
+# 9200 elasticsearch rest
+# 9300 elasticsearch nodes
+# 5044 filebeat plugin
 EXPOSE 5601/tcp 9200/tcp 9300/tcp 5044/tcp
 
 # volumes
