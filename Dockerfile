@@ -1,4 +1,4 @@
-# required full openssl support
+# required for full openssl support
 FROM anapsix/alpine-java:latest
 
 # changeables
@@ -10,10 +10,13 @@ ENV  K_URL="https://artifacts.elastic.co/downloads/kibana/kibana-${VERSION}-linu
 ENV GEOCITY_URL="http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.mmdb.gz"
 
 # meta
-LABEL maintainer="me codar nl"
-LABEL source="https://github.com/githubcdr/docker-elk"
-LABEL version=${VERSION}
-LABEL description="Elasticsearch, Logstash and Kibana based on Alpine-java"
+LABEL \
+	org.label-schema.maintainer="me codar nl" \
+	org.label-schema.name="elk5" \
+	org.label-schema.description="Docker version of Elasticsearch, Logstash and Kibana 5 based on Alpine Linux" \
+	org.label-schema.version="${VERSION}" \
+	org.label-schema.vcs-url="https://github.com/githubcdr/docker-elk" \
+	org.label-schema.schema-version="1.0"
 
 # check if elasticsearch is operational
 HEALTHCHECK --interval=120s --timeout=2s --retries=12 \
