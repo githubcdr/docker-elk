@@ -18,10 +18,6 @@ LABEL \
 	org.label-schema.vcs-url="https://github.com/githubcdr/docker-elk" \
 	org.label-schema.schema-version="1.0"
 
-# check if elasticsearch is operational
-HEALTHCHECK --interval=120s --timeout=2s --retries=12 \
-	CMD curl --silent --fail localhost:9200/_cluster/health || exit 1
-
 # do all in /tmp
 WORKDIR	/tmp
 
