@@ -2,7 +2,7 @@
 FROM anapsix/alpine-java:latest
 
 # changeables
-ENV VERSION=5.5.1
+ENV VERSION=6.0.0-beta1
 ENV PKGS="s6 ca-certificates openssl wget unzip git tar nodejs"
 ENV ES_URL="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${VERSION}.tar.gz"
 ENV LS_URL="https://artifacts.elastic.co/downloads/logstash/logstash-${VERSION}.tar.gz"
@@ -12,8 +12,8 @@ ENV GEOCITY_URL="http://geolite.maxmind.com/download/geoip/database/GeoLite2-Cit
 # meta
 LABEL \
 	org.label-schema.maintainer="me codar nl" \
-	org.label-schema.name="elk5" \
-	org.label-schema.description="Docker version of Elasticsearch, Logstash and Kibana 5 based on Alpine Linux" \
+	org.label-schema.name="elk6" \
+	org.label-schema.description="Docker version of Elasticsearch, Logstash and Kibana 6 based on Alpine Linux" \
 	org.label-schema.version="${VERSION}" \
 	org.label-schema.vcs-url="https://github.com/githubcdr/docker-elk" \
 	org.label-schema.schema-version="1.0"
