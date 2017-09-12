@@ -1,4 +1,4 @@
-# Elasticsearch, Logstash and Kibana 5.5.1
+# Elasticsearch, Logstash and Kibana 5.6.0
 
 This is a small container at only 300Mb compressed, running a full functional ELK 5 stack.
 

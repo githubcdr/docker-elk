@@ -2,7 +2,7 @@
 FROM anapsix/alpine-java:latest
 
 # changeables
-ENV VERSION=5.5.1
+ENV VERSION=5.6.0
 ENV PKGS="s6 ca-certificates openssl wget unzip git tar nodejs"
 ENV ES_URL="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${VERSION}.tar.gz"
 ENV LS_URL="https://artifacts.elastic.co/downloads/logstash/logstash-${VERSION}.tar.gz"
