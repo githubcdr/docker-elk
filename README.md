@@ -27,9 +27,8 @@ sysctl -w vm.max_map_count=262144
 * updated upstream grok patterns
 * running on Alpine Linux with s6, small, clean and efficient
 * Maxmind geo data enabled
-* Each process runs as own user
+* Each process runs as own user, in docker ;)
 * multi input index is created based on type
-* docker HEALTHCHECK for elasticsearch
 
 ## Instructions
 
