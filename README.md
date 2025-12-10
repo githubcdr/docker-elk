@@ -20,15 +20,15 @@ sysctl -w vm.max_map_count=262144
 
 ## Features
 
-* filebeat support
-* cisco syslog support
-* yum.log support via filebeat
-* nginx accesslogs support
-* updated upstream grok patterns
-* running on Alpine Linux with s6, small, clean and efficient
-* Maxmind geo data enabled
-* Each process runs as own user, in docker ;)
-* multi input index is created based on type
+- filebeat support
+- cisco syslog support
+- yum.log support via filebeat
+- nginx accesslogs support
+- updated upstream grok patterns
+- running on Alpine Linux with s6, small, clean and efficient
+- Maxmind geo data enabled
+- Each process runs as own user, in docker ;)
+- multi input index is created based on type
 
 ## Instructions
 
@@ -59,8 +59,8 @@ There will probably be no index patterns, you'll have to import them manually. F
 
 ## Todo
 
-* Add java environment options
-* autoupdate GEO data
-* curator install
-* auto cleanup of old indices
-* elasticsearch plugins
+- Add java environment options
+- autoupdate GEO data
+- curator install
+- auto cleanup of old indices
+- elasticsearch plugins
